@@ -37,6 +37,12 @@ const songs = [
     displayName: "Teri Mitti (Male version)",
     artist: "B Praak",
   },
+  {
+    ytImageId: "pjQyBF2gwjQ",
+    fileName: "ki-banu-duniya-da",
+    displayName: "Ki Banu Duniya Da",
+    artist: "Gurdas Maan",
+  },
 ];
 
 function loadSong(song) {
