@@ -4,6 +4,8 @@ const artist = document.getElementById("artist");
 const music = document.getElementById("music");
 const progressContainer = document.getElementById("progress-container");
 const progress = document.getElementById("progress");
+const currentTimeEl = document.getElementById("current-time");
+const durationEl = document.getElementById("duration");
 const prevButton = document.getElementById("prev");
 const playButton = document.getElementById("play");
 const nextButton = document.getElementById("next");
@@ -83,9 +85,36 @@ function handleNextSong() {
 function handleProgressBarUpdate(event) {
   if (isPlaying) {
     const { duration, currentTime } = event.srcElement;
-    console.log({ duration, currentTime });
     const progressPercent = (currentTime / duration) * 100;
     progress.style.width = `${progressPercent}%`;
+
+    const durationMinutes = Math.floor(duration / 60);
+    let durationSeconds = Math.floor(duration % 60);
+    if (durationSeconds < 10) {
+      durationSeconds = `0${durationSeconds}`;
+    }
+    if (durationSeconds) {
+      durationEl.textContent = `${durationMinutes}:${durationSeconds}`;
+    }
+
+    const currentTimeMinutes = Math.floor(currentTime / 60);
+    let currentTimeSeconds = Math.floor(currentTime % 60);
+    if (currentTimeSeconds < 10) {
+      currentTimeSeconds = `0${currentTimeSeconds}`;
+    }
+    if (currentTimeSeconds) {
+      currentTimeEl.textContent = `${currentTimeMinutes}:${currentTimeSeconds}`;
+    }
+  }
+}
+
+function handleProgressBarSet(event) {
+  const width = this.clientWidth;
+  const clickX = event.offsetX;
+  const { duration } = music;
+  music.currentTime = (clickX / width) * duration;
+  if (!isPlaying) {
+    handlePlaySong();
   }
 }
 
@@ -94,4 +123,6 @@ loadSong(songs[songIndex]);
 prevButton.addEventListener("click", handlePrevSong);
 playButton.addEventListener("click", handlePlayOrPause);
 nextButton.addEventListener("click", handleNextSong);
+music.addEventListener("ended", handleNextSong);
 music.addEventListener("timeupdate", handleProgressBarUpdate);
+progressContainer.addEventListener("click", handleProgressBarSet);
