@@ -2,6 +2,8 @@ const image = document.getElementById("image");
 const title = document.getElementById("title");
 const artist = document.getElementById("artist");
 const music = document.getElementById("music");
+const progressContainer = document.getElementById("progress-container");
+const progress = document.getElementById("progress");
 const prevButton = document.getElementById("prev");
 const playButton = document.getElementById("play");
 const nextButton = document.getElementById("next");
@@ -35,6 +37,13 @@ const songs = [
   },
 ];
 
+function loadSong(song) {
+  title.textContent = song.displayName;
+  artist.textContent = song.artist;
+  music.src = `music/${song.fileName}.mp3`;
+  image.src = `https://img.youtube.com/vi/${song.ytImageId}/maxresdefault.jpg`;
+}
+
 function handlePlaySong() {
   isPlaying = true;
   playButton.classList.replace("fa-play", "fa-pause");
@@ -51,13 +60,6 @@ function handlePauseSong() {
 
 function handlePlayOrPause() {
   return isPlaying ? handlePauseSong() : handlePlaySong();
-}
-
-function loadSong(song) {
-  title.textContent = song.displayName;
-  artist.textContent = song.artist;
-  music.src = `music/${song.fileName}.mp3`;
-  image.src = `https://img.youtube.com/vi/${song.ytImageId}/maxresdefault.jpg`;
 }
 
 function handlePrevSong() {
@@ -78,8 +80,18 @@ function handleNextSong() {
   handlePlaySong();
 }
 
+function handleProgressBarUpdate(event) {
+  if (isPlaying) {
+    const { duration, currentTime } = event.srcElement;
+    console.log({ duration, currentTime });
+    const progressPercent = (currentTime / duration) * 100;
+    progress.style.width = `${progressPercent}%`;
+  }
+}
+
 loadSong(songs[songIndex]);
 
 prevButton.addEventListener("click", handlePrevSong);
 playButton.addEventListener("click", handlePlayOrPause);
 nextButton.addEventListener("click", handleNextSong);
+music.addEventListener("timeupdate", handleProgressBarUpdate);
