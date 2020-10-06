@@ -9,41 +9,63 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 12px;
+  font-family: "Spartan", sans-serif;
+  font-size: 0.75rem;
+}
+
+.player-container {
+  width: 400px;
+  max-width: 100%;
+  height: 500px;
+  background-color: #e7e7e7;
+  border-radius: 1.25rem;
+  box-shadow: 0 0.3125rem 2rem 0.3125rem rgba(0, 0, 0, 0.3);
 }
 
 .img-container {
+  height: 300px;
+  width: 350px;
+  max-width: 100%;
   position: relative;
-  top: -50px;
-  left: 50px;
+  top: -3rem;
+  left: 25px;
+}
+
+.img-container img {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1.25rem;
+  box-shadow: 0 1rem 2rem 0.3125rem rgba(0, 0, 0, 0.3);
 }
 
 h2 {
-  font-size: 25px;
+  font-size: 1.5625rem;
   text-align: center;
   margin: 0;
 }
 
 h3 {
-  font-size: 20px;
+  font-size: 1.25rem;
   text-align: center;
   font-weight: 400;
-  margin: 5px 0 0;
+  margin: 0.3125rem 0 0;
 }
 
 /* Progress */
 .progress-container {
   background: #fff;
-  border-radius: 5px;
+  border-radius: 0.3125rem;
   cursor: pointer;
-  margin: 40px 20px;
-  height: 4px;
+  margin: 2.5rem 1.25rem;
+  height: 0.25rem;
   width: 90%;
 }
 
 .progress {
   background: #242323;
-  border-radius: 5px;
+  border-radius: 0.3125rem;
   height: 100%;
   width: 66%;
   transition: width 0.1s linear;
@@ -51,7 +73,7 @@ h3 {
 
 .duration-wrapper {
   position: relative;
-  top: -25px;
+  top: -1.5625rem;
   display: flex;
   justify-content: space-between;
 }
@@ -59,39 +81,70 @@ h3 {
 /* Controls */
 .player-controls {
   position: relative;
-  top: -15px;
+  top: -1rem;
   left: 120px;
-  width: 200px;
+  width: 220px;
 }
 
 .fas {
-  font-size: 30px;
+  font-size: 2rem;
   color: rgb(129, 129, 129);
-  margin-right: 30px;
+  margin-right: 2rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.fas:hover {
+  filter: brightness(80%);
 }
 
 .main-button {
-  font-size: 40px;
+  font-size: 2.5rem;
   position: relative;
-  top: 3px;
+  top: 0.1875rem;
 }
 
-/* Media Query: iPhone (Vertical) */
-@media screen and (max-width: 376px) {
+/* Media Query */
+@media screen and (max-width: 399px) {
+  .player-container {
+    width: 95vw;
+    height: 550px;
+  }
+
   .img-container {
-    left: 29px;
+    left: 0;
+    padding: 1rem;
+    margin: 0 auto;
+    width: 80vw;
   }
 
   h2 {
-    font-size: 20px;
+    font-size: 1.25rem;
   }
 
   h3 {
-    font-size: 15px;
+    font-size: 1rem;
   }
 
   .player-controls {
-    top: -10px;
-    left: 100px;
+    top: -0.625rem;
+    left: 0;
+    position: inherit;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .fas {
+    font-size: 1.5rem;
+    margin-right: 1.5rem;
+  }
+
+  .main-button {
+    font-size: 1.75rem;
+  }
+
+  .progress-container {
+    width: 90vw;
+    margin: 2rem auto;
   }
 }
