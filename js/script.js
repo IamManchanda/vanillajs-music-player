@@ -14,6 +14,12 @@ let isPlaying = false;
 let songIndex = 0;
 const songs = [
   {
+    ytImageId: "pjQyBF2gwjQ",
+    fileName: "ki-banu-duniya-da",
+    displayName: "Ki Banu Duniya Da",
+    artist: "Gurdas Maan",
+  },
+  {
     ytImageId: "atVof3pjT-I",
     fileName: "kaun-tujhe-original-hindi",
     displayName: "Kaun Tujhe (Original Hindi)",
@@ -36,12 +42,6 @@ const songs = [
     fileName: "teri-mitti-male-version",
     displayName: "Teri Mitti (Male version)",
     artist: "B Praak",
-  },
-  {
-    ytImageId: "pjQyBF2gwjQ",
-    fileName: "ki-banu-duniya-da",
-    displayName: "Ki Banu Duniya Da",
-    artist: "Gurdas Maan",
   },
 ];
 
