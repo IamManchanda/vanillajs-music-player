@@ -26,12 +26,6 @@ const songs = [
     artist: "Palak Muchhal",
   },
   {
-    ytImageId: "FDe9nYJXWco",
-    fileName: "kaun-tujhe-english-version",
-    displayName: "Kaun Tujhe (English version)",
-    artist: "Emma Heesters",
-  },
-  {
     ytImageId: "7vNQZEMgo4w",
     fileName: "teri-mitti-female-version",
     displayName: "Teri Mitti (Female version)",
